@@ -1,0 +1,4 @@
+com/mycompany/mapita/modelo/HibernateUtil.class
+com/mycompany/mapita/modelo/Marcador.class
+com/mycompany/mapita/modelo/Usuario.class
+com/mycompany/mapita/modelo/AbstractDAO.class

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 12/02/2019 02:13:19 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class name="com.mycompany.mapita.modelo.Marcador" optimistic-lock="version" schema="public" table="marcador">
+    <id name="idMarcador" type="int">
+      <column name="id_marcador"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.mycompany.mapita.modelo.Usuario" fetch="select" name="usuario">
+      <column name="id_usuario" not-null="true"/>
+    </many-to-one>
+    <property name="descripcionMarcador" type="string">
+      <column name="descripcion_marcador" not-null="true"/>
+    </property>
+    <property name="longitud" type="double">
+      <column name="longitud" not-null="true" precision="17" scale="17"/>
+    </property>
+    <property name="latitud" type="double">
+      <column name="latitud" not-null="true" precision="17" scale="17"/>
+    </property>
+  </class>
+</hibernate-mapping>
