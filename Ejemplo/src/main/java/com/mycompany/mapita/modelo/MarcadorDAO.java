@@ -16,20 +16,20 @@ import org.hibernate.Transaction;
  *
  * @author kevin
  */
-public class UsuarioDAO extends AbstractDAO<Usuario>{
+public class MarcadorDAO extends AbstractDAO<Marcador>{
     
     protected SessionFactory sessionFactory;
     
-    public UsuarioDAO(){
+    public MarcadorDAO(){
         this.sessionFactory = HibernateUtil.getSessionFactory();
     }
     
-    protected void save(Usuario usr){
+    protected void save(Marcador mcr){
         Session session = this.sessionFactory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            session.save(usr);
+            session.save(mcr);
             tx.commit();
         }catch(HibernateException e){
             if(tx != null)
@@ -41,17 +41,17 @@ public class UsuarioDAO extends AbstractDAO<Usuario>{
     }
     
     
-    protected void update(Usuario usr){}
+    protected void update(Marcador mcr){}
     
-    protected void delete(Usuario usr){}
+    protected void delete(Marcador mcr){}
     
-    protected Usuario find(Class clazz, int id){
-        Usuario usr = null;
+    protected Marcador find(Class clazz, int id){
+        Marcador mcr = null;
         Session session = this.sessionFactory.getCurrentSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
-            usr = (Usuario) session.get(clazz, id);
+            mcr = (Marcador) session.get(clazz, id);
             tx.commit();
         }catch(HibernateException e){
             if(tx != null)
@@ -59,18 +59,18 @@ public class UsuarioDAO extends AbstractDAO<Usuario>{
         }finally{
             session.close();
         }
-        return usr;
+        return mcr;
     }
     
-    protected List<Usuario> findAll(Class clazz){
-        List<Usuario> usr = null;
+    protected List<Marcador> findAll(Class clazz){
+        List<Marcador> mcr = null;
         Session session = this.sessionFactory.getCurrentSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
             String hql = "From"+clazz;
             Query query = session.createQuery(hql);
-            usr = (List<Usuario>) query.uniqueResult();
+            mcr = (List<Marcador>) query.uniqueResult();
             tx.commit();
         }catch(HibernateException e){
             if(tx != null)
@@ -78,6 +78,6 @@ public class UsuarioDAO extends AbstractDAO<Usuario>{
         }finally{
             session.close();
         }
-        return usr;
+        return mcr;
     }
 }
